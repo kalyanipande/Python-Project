@@ -1,0 +1,81 @@
+Case Study: Dimensional Modeling for an E-commerce Platform
+
+
+
+
+Background:
+
+
+
+You're a Data Engineer for "Azurelib.com," a fast-growing e-commerce platform. The company has grown exponentially in the last few years, and the management team wants to better understand their sales and customer behavior patterns to make data-driven decisions.
+
+
+
+Your task is to design a dimensional model to support the sales analysis of ShopNShip. The key subjects the business is interested in are Sales, Customers, Products, and Time. The high-level requirements are as follows:
+
+
+
+Requirements:
+
+
+
+Sales Analysis: Track sales revenue, quantity sold, returns, and discounts. The sales data should be analyzed by various dimensions such as time, product, customer, and location.
+
+
+
+Customer Analysis: Understand customer behavior in terms of frequency of purchase, returning customers, average purchase amount, and customer segments.
+
+
+
+Product Analysis: Identify top-selling products, product categories with high returns, seasonal sales pattern for certain product categories.
+
+
+
+Time Analysis: Identify peak sales time (hour, day, month, and year). Find out seasonality in sales and the best performing months/quarters.
+
+
+
+
+
+Data Available:
+
+
+
+Transaction data with details like Order ID, Customer ID, Product ID, Date and Time of purchase, Quantity, Price, Discount applied, and Return status.
+
+
+
+Customer data including Customer ID, Name, Date of Birth, Gender, Signup date, and Location (City, State, Country).
+
+
+
+Product data with details such as Product ID, Product Name, Category, Sub-category, Price, and Manufacturer.
+
+
+
+Date and Time data for each transaction with granularity up to the hour.
+
+
+
+
+
+Your task is to create a star schema for the given scenario. Your solution should include:
+
+
+
+Identification and definition of facts and dimensions.
+
+Diagram of the star schema.
+
+Brief descriptions of how each table would be used in the analysis.
+
+Remember, the goal is to provide a structure that will allow for intuitive and efficient querying for business intelligence purposes.
+
+
+
+Good luck!
+
+
+
+PS  You are free to take a few assumptions as well where ever needed.
+
