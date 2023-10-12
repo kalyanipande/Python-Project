@@ -1,0 +1,13 @@
+Advanced Questions
+
+1. Create a pipeline to copy the customer data from csv file to SQL table which has only 3 columns. While copying the data, ensure that copy all the rows where custid is odd number. Also check if cust id exist in table then update it.  
+
+File attached with question.
+Table: Create dummy table with column (CID, Name, mailid)
+Insert dummy row with id 1,3,5,7,9,8,10
+
+
+2. Create a pipeline to implement the SCD Type 3 example using the Dataflow.
+
+3. Create a pipeline to remove the duplicate record available in the CSV file and save it as JSON file.
+
