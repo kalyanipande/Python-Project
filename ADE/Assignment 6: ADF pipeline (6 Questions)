@@ -1,0 +1,55 @@
+Easy Questions:
+
+
+
+1. Create a pipeline name 'Without_Foreach_Example' to copy the Customer & Customer address table data into ADLS without using foreach activity.
+
+
+
+2. Create a pipeline name 'Foreach_Example' to copy the Customer & Customer address table data into ADLS using the one copy activity.
+
+
+
+Tricky Questions:
+
+
+
+3. Create a pipeline name 'Foreach_Example_2' which solves the following business use case.
+
+
+
+
+
+Customer data is very important for our business. Hence whenever we have more than 100 records in the customer table,
+
+we copy the customer data to another table customer_copy within the sql db.
+
+
+
+However whenever we do this copy, we first truncate the table 'customer_copy' and then copy the data from 'customer' table
+
+
+
+Hint : Use ADF to solve this problem.
+
+
+
+4. Business wants to move the data from 3 different tables (Customer, Product, CustomerAddress) to ADLS location in CSV format.
+
+However they want the make a pipeline in such a manner that All these copy happens through an individual pipeline, which is called by
+
+one common pipeline.
+
+
+
+5. In the above case problem is that every time the pipeline runs it will overwrite the data. Ensure that all the data goes into
+
+  Folder like (Customer/Year/Month/Day) to avoid any overwriting. Please rewrite the pipeline.
+
+
+
+6. I am attaching a file, load this file into your ADLS location. This file contains a threshold value. Create a pipeline 
+
+  in such a manner that, it will first get the threshold value from this file and then check if the record count in the customer
+
+table is more than it or not. If yes then copy the customer data from SQL db to ADLS location in JSON format.
