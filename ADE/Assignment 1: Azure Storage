@@ -1,0 +1,29 @@
+Question 1:
+
+1. Create a storage account with the name: yourname+yourdob
+2. While making ensure it is in the resource group name: - Azurelib-Academy and the region is US-east
+3. Create a container name landing (publicly accessible)
+4. Create another container name landing private (publicly not accessible)
+5. Upload any text file in both container.
+6. Create a SAS token which is valid for the next 2 days to access your files.
+7. Attach the screenshot under the comment in the course chapter.
+8. Delete the azure storage account you have created to stop the charges.
+9. Share it on LinkedIn with all of us. Tag  #Mission100AzureDataEngineer
+
+
+
+
+Question 2:
+
+1. Create a ADLS storage account with the name: yourname+yourdob+adls
+2. While making ensure it is in the resource group name: - Azurelib-Academy and the region is US-east
+3. Try to change the soft delete time for 7 days to 10 days.
+4. Create a container name landing (publicly accessible)
+5. Create another container name landing private (publicly not accessible)
+6. Create a directory Practice-1 in both container
+7. Upload any text file in both container inside the Practice-1.
+8. Delete the file just uploaded
+9. Try to restore the deleted file.
+10. Attach the screenshot under the comment in the course chapter.
+11. Delete the azure storage account you have created to stop the charges.
+12. Share it on LinkedIn with all of us. 
