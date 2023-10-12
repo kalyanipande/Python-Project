@@ -1,0 +1,18 @@
+1. Create a pipeline name 'Ingestion_Customer_SQLDB_ADLS' which will copy all the records from Customer table to ADLS account as CSV File.
+
+
+
+2. Create a pipeline name 'Ingestion_Customer_SQLDB_ADLS_Folder' which will copy all the records from Address table to ADLS account inside the 'Address' folder as CSV File.
+
+
+
+3. Create a Pipeline name 'Ingestion_Customer_JOIN_ADLS' which will copy the all the customer names along with their address into the csv. (Hint Join Customer+ Customer Address table)
+
+
+
+4. Create a pipeline name 'Ingestion_Product_To_JSON' which will copy all the product records as JSON only if total number of records >10.
+
+
+
+5. Create a pipeline name 'Ingestion_Product_Addres_To_JSON' which will copy all the product records as JSON only if total number of records >10. After that check total record count in address table if they are greater than 100 then copy the adress table data as CSV in ADLS.
+
