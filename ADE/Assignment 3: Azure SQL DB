@@ -1,0 +1,3 @@
+Create a new Azure SQL DB with the name 'Mission100+Yourname+DOB+DB' inside the resource group 'azurelib'.
+Keep the Sample Db included while creating this Db.
+You need to create a new DB server as well while creating this Database.
