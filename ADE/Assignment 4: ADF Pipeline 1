@@ -1,0 +1,3 @@
+Go to the ADF studio and create your first pipeline name: Copy_ProductTable_To_CSV. 
+In the newly created SQL DB there is one built in SalesLt.Product table. 
+Copy the Product table data to CSV file in 'landing/CSV'  folder in ADLS using the ADF.
