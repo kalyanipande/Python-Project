@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: DockerfileDev
+    command: sh -c "python3 webapp/manage.py migrate &&
+            gunicorn webapp.route.wsgi:application --pythonpath webapp --bind 0.0.0.0:8000"
+    volumes:
+      - .:/app
+
+    ports:
+      - "8000:8000"

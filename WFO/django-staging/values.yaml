@@ -1,0 +1,85 @@
+###################################
+# Abi variables
+###################################
+Metadata:
+  Project: null
+  Customer: null
+  Country: null
+  Business: null
+  Domain: null
+  Cloud: null
+  DataCenter: null
+  # ------------------- filled with pipeline -------------------
+  # Kubernetes Context : same as context name in config file
+  KubeContext: null
+  # Namespace set by tag master=> production, develop=> staging
+  Namespace: null
+  # pipeline_tag will be used for all artifact
+  PipeLineTag: null
+  # deploy_name prefix will be used for all deploy
+  DeployName: null
+  # Wildcard DNS for Ingres
+  WildCardDns: null
+  # Kubernetes Storage class
+  StorageClass: null
+  # ---------------- end / filled with pipeline ----------------
+
+# Default values for django.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+Solution:
+  ArtifactsCredentials:
+    # Variables here are set by 002_auto_conf.py script
+    # In CI/CD Variables, you must set :
+    # DOCKER_REGISTRY
+    # DOCKER_USER
+    # DOCKER_PASSWORD
+    # HELM_REPO
+    # HELM_USER
+    # HELM_PASSWORD
+    docker:
+      registry: ""
+      user: ""
+      password: ""
+    helm:
+      repo: ""
+      user: ""
+      password: ""
+
+
+Pod:
+  AppPrefix: "major"
+  Image: abi-docker-local.artifactory-espoo1.int.net.nokia.com/abi/django
+  ImageTag: base_django
+  Platform: "production"
+  KeycloakHost:  ""
+  KeycloakAppName:  ""
+  ENV: ""
+  SSO_Enable: "True"
+  EnablePostgres: "true"
+  ServiceNamePostgreSQL: "postgres"
+  ServiceNameGateKeeper: "gatekeeper"
+  ServiceNameAngularGUI: "angular"
+  ServiceNameGraphQL: "graphql"
+  ConfigmapEnable: "true"
+  ConfigmapName: "solution"
+Resources:
+  CpuRequest: 4
+  CpuLimit: 8
+Svc:
+  type: "LoadBalancer"
+# enable ingress values true when you are running with single pipeline
+Ingress:
+  Enable: "true"
+  TLS:
+    Enable: "true"
+    Secret: "abi-tls"
+  GateKeeperAuth:
+    Enable: "true"
+    Secret: ""
+  Angular:
+    Enable: "true"
+    Secret: ""
+  Graphql:
+    Enable: "false"
+    Secret: ""

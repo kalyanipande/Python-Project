@@ -1,0 +1,128 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: APP_NAME
+  namespace: DC_NAMESPACE
+spec:
+  selector:
+    matchLabels:
+      app: APP_NAME
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: APP_NAME
+    spec:
+      containers:
+      - name: APP_NAME
+        image: ava-docker-local.esisoj70.emea.nsn-net.net/ava/customers/dcm-django-webapp:IMAGE_TAG
+        ports:
+          - containerPort: 80
+            name: "webhttp"
+        env:
+          - name: PROJECT
+            value: "adf"
+          - name: CUSTOMER
+            value: "care"
+          - name: COUNTRY
+            value: "americas"
+          - name: BUSINESS
+            value: "care"
+          - name: DOMAIN
+            value: ""
+          - name: CLOUD
+            value: ""
+          - name: DATACENTER
+            value: "americas"
+          - name: PIPELINE_TAG
+            value: ""
+          - name: DEPLOY_NAME
+            value: ""
+          - name: DATA_CENTER
+            value: "americas"
+          - name: NAMESPACE
+            value: "adf-staging"
+          - name: ENV_IS_SSO_ENABLED
+            value: "DC_ISSSOENABLED"
+          - name: KEYCLOAK_HOST
+            value: "DC_KEYCLOAK_HOST"
+          - name: KEYCLOAK_APP
+            value: "DC_KEYCLOAK_APP"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: APP_NAME
+  namespace: DC_NAMESPACE
+spec:
+  ports:
+  - name: webhttp
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: APP_NAME
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: APP_NAME-ingress
+  namespace: DC_NAMESPACE
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.org/websocket-services: "gl-BUSINESS-DC_NAMESPACE"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/auth-url: "https://APP_NAME.DNS/gatekeeper/auth?rd=$escaped_request_uri"
+    nginx.ingress.kubernetes.io/auth-signin: "https://APP_NAME.DNS/gatekeeper/start?rd=$escaped_request_uri"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      auth_request_set $proxy_data_claims $upstream_http_proxy_claims;
+      proxy_set_header 'X-Proxy-Claims' $proxy_data_claims;
+      auth_request_set $proxy_kc_token $upstream_http_kc_token;
+      proxy_set_header 'X-KC-Token' $proxy_kc_token;
+      auth_request_set $proxy_token_status $upstream_http_token_status;
+      proxy_set_header 'X-Token-Status' $proxy_token_status;
+      auth_request_set $auth_cookie_proxy_claims $upstream_http_proxy_claims;
+      add_header Set-Cookie guikeys=$auth_cookie_proxy_claims;
+
+spec:
+  rules:
+  - host: APP_NAME.DNS
+    http:
+      paths:
+      - path: /orch/
+        backend:
+          serviceName: APP_NAME
+          servicePort: 80
+      - path: /
+        backend:
+          serviceName: gui-BUSINESS-DC_NAMESPACE
+          servicePort: 80
+      - path: /v1/
+        backend:
+          serviceName: gl-BUSINESS-DC_NAMESPACE
+          servicePort: 8080
+  tls:
+  - hosts:
+    - APP_NAME.DNS
+    secretName: abi-tls
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: APP_NAME-ingress-gatekeeper
+  namespace: DC_NAMESPACE
+
+spec:
+  rules:
+  - host: APP_NAME.DNS
+    http:
+      paths:
+      - path: /gatekeeper
+        backend:
+          serviceName: gk-BUSINESS-DC_NAMESPACE
+          servicePort: 8000
+  tls:
+  - hosts:
+    - APP_NAME.DNS
+    secretName: abi-tls

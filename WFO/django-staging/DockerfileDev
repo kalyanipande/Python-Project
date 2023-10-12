@@ -1,0 +1,12 @@
+FROM ava-docker-local.esisoj70.emea.nsn-net.net/ava/customers/alice_decryptor_image:13
+
+COPY ./webapp /app
+COPY ./requirements.txt /app/requirements.txt
+#COPY ./webapp/route/dev.env /app/.env
+
+WORKDIR /app
+
+RUN apt update \
+    && apt install -y
+
+RUN pip3 install -r requirements.txt -i http://artifactory-blr1.ext.net.nokia.com/artifactory/api/pypi/python-remote/simple/ --trusted-host artifactory-blr1.ext.net.nokia.com

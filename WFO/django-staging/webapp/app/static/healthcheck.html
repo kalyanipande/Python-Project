@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ADF Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  .card_padding{
+      padding-top: 10px;
+      /* height: 300px; */
+  }
+    </style>
+</head>
+<body> 
+
+{% block includes %}
+<div class="container">
+    <div class="row">
+        {% for x in configs %}
+        <div class="col-xs-12 col-sm-6 col-md-4 card_padding">
+            <!-- Card -->
+            <div class="card pmd-card">
+                <!-- Card Header -->
+                <div class="card-header d-flex flex-row">
+                    <a class="pmd-avatar-list-img" href="javascript:void(0);">
+                        <img src="{{x.img}}" width="80" height="80">
+                    </a>
+                    
+                    <div class="media-body">
+                        <h3 class="card-title">{{x.title}}</h3>
+                        <p class="card-subtitle">{{x.subtitle}}</p>
+                    </div>
+                    {% if x.status == "Connected" %}
+                        <i class="material-icons pmd-list-icon pmd-sm" style="font-size:50px;color:green">done</i>
+                    {% endif %}
+                    {% if x.status == "Not Connected" %}
+                        <i class="material-icons pmd-list-icon pmd-sm" style="font-size:50px;color:red">clear</i> 
+                    {% endif %}
+                    
+                    
+                </div>
+            
+                <!-- Card Body -->
+                <div class="card-body">
+                    <!-- <h2 class="card-title">Title goes here</h2> -->
+                    {% for k, v in x.data.items %}
+                    <li>{{k}} --->> {{v}}</li>
+                    {% endfor %}
+                    <li>Status --->> {{x.status}}</li>
+                </div>
+            </div>
+            <!-- Card -->
+        </div>
+        {% endfor %}
+</div>
+  
+</div>
+{% endblock includes %}
+</body>
+</html>
