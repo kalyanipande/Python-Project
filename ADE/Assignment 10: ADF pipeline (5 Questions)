@@ -1,0 +1,15 @@
+1. Create a pipeline to fetch the All countries data from Rest API (https://restcountries.com/v3.1/all) and save it as parquet file in ADLS.
+
+
+Tricky: 
+
+2. Create a pipeline to fetch the 5 countries (india,us,uk,china,russia)  data from Rest API (https://restcountries.com/v3.1/name/{name}   here replace the {name} with Country name like https://restcountries.com/v3.1/name/us)  and save it in separate file as JSON with File name equal to Country name.
+
+3. Add the trigger to above pipeline in such a way that it will automatically run two times in a day ( 12:00 AM and 12:00 PM IST) 
+Tip: Incase you can't able to do Q2, do this on Q1
+
+4. Now to make it more realistic, as soon as any copy activity fails in the above pipeline send an automated email to notify user.
+
+5. Make the mail more generic by sending the Pipeline name, Stauts, SenderMailiD, and Name within the mail. Ensure mail will come in case of both success and Fail.
+
+6. Once a file for India gets generated trigger a pipeline that will copy the India.json file as CSV into the ADLS account.
