@@ -1,0 +1,13 @@
+Create a pipeline to copy the customer data from csv file to SQL where the customer id is an even number.
+(Attaching the Customer File)
+
+Create a pipeline to join the two files (Customer, Customer Address) based on customer id and save the result as a JSON file.
+
+Create a pipeline to read the Customer table data from SQL and CustomerAddress data from CSV, join both of them,
+and then save the result where customer id> 1000 & Customer id <2000 in ascending order as a Parquet file.
+
+create a pipeline to read the Product CSV file, and calculate the highest listPrice of any product under each productcategory.
+Ensure that product shouldn't be of blue in color and save the result as CSV file inside ProductResult folder.
+
+create a pipeline to read the Product CSV file, and calculate the highest listPrice of any product under each productcategory.
+Ensure that product shouldn't be of blue in color and save the result as a SINGLE CSV file inside ProductSingleResult folder.
