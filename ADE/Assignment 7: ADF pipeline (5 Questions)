@@ -1,0 +1,16 @@
+Easy Questions:
+
+1. Create a pipeline named 'GetMetaData_Example' to fetch the list of all the files available inside the ADLS folder.
+
+2. Create a pipeline name 'Foreach_Example' to copy the Customer & Customer address table data into ADLS using the one copy activity.
+
+Tough Questions:
+
+3. Create a pipeline that first checks whether the Customer.csv file is available in the folder location. If it is available it will copy the file data to the Customer Table.
+
+4. Create a pipeline that will create the incremental pipeline using the table instead of HighWaterMark File.
+
+5. Create a pipeline name 'Foreach_Example2' to copy the below information using just one copy activity.
+
+- All the product table data where productid > 100
+- All the customer table data where Customer id>100 and Customer id <1000
